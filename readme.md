@@ -58,7 +58,7 @@
   APP_URL=http://localhost
   ```
   
-## Setting SQLite:
+## Setting MySql:
 
 >Follow the steps bellow to set your the dabase
   
