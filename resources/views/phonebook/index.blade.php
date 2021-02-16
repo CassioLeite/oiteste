@@ -8,8 +8,9 @@
                 <div class="panel-heading">
                     <p>Listagem de Agendamentos</p>
                     <a class="btn btn-success" href="{{ route('phonebooks.create') }}">Novo Agendamento</a>
+                    <a class="btn btn-success pull-right" href="{{ route('phonebooks.export') }}"><span class="glyphicon glyphicon-save"></span> .CSV</a>
                 </div>
-                
+
                 <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">

@@ -110,6 +110,32 @@ class PhonebookController extends Controller
     }
 
     /**
+     * Export CSV.
+     */
+    public function export()
+    {
+        $filename = 'usuarios';
+        $delimiter = ';';
+        $phonebooks = Phonebook::all()->toArray();
+        
+        $f = fopen('php://memory', 'w'); 
+       
+        foreach ($phonebooks as $line) { 
+            unset($line['user_id']);
+            unset($line['created_at']);
+            unset($line['updated_at']);
+            $line['status'] = $line['status'] ? 'Ativo' : 'Inativo';
+            
+            fputcsv($f, $line, $delimiter); 
+        }
+        fseek($f, 0);
+        header('Content-Type: application/csv');
+        header('Content-Disposition: attachment; filename="'.$filename.'";');
+        
+        fpassthru($f);
+    }
+
+    /**
      * Format the address.
      *
      * @param \Illuminate\Http\Request $request

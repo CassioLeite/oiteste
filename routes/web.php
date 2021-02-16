@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/phonebooks/export', 'PhonebookController@export')->name('phonebooks.export');
 Route::resource('phonebooks', 'PhonebookController');
 Route::post('/phonebooks/status', 'PhonebookController@status')->name('phonebooks.status');
 Route::get('/home', 'HomeController@index')->name('home');
